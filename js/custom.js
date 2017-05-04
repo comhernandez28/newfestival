@@ -271,8 +271,8 @@ Version:    1.1
         galleryHolder.children('div.item').fadeIn(500, '', function() {
             galleryHolder.children('div').addClass("animate");
             //Reset gallery filterOptions
-            $('#filterOptions li .hi-icon').removeClass('active').first().addClass('active');
-
+            $('#filterOptions li .hi-icon').removeClass('active').eq(1).addClass('active');
+            //instead of eq(1) type .first() to select first child
         });
     }
 
