@@ -20,6 +20,9 @@ Version:    1.1
 // Dom Ready Function
 
 
+
+//rest of code
+
     $(function() {
     'use strict';
     var windowWidth;
@@ -271,7 +274,7 @@ Version:    1.1
         galleryHolder.children('div.item').fadeIn(500, '', function() {
             galleryHolder.children('div').addClass("animate");
             //Reset gallery filterOptions
-            $('#filterOptions li .hi-icon').removeClass('active').eq(1).addClass('active');
+            $('#filterOptions li .hi-icon').removeClass('active').first().addClass('active');
             //instead of eq(1) type .first() to select first child
         });
     }
@@ -474,4 +477,35 @@ $(window).on('load', function(e) {
     );
   });
 
+});
+
+//my code
+
+$(function () {
+    $(".item a").slice(0, 4).show();
+    $("#loadMore").on('click', function (e) {
+        e.preventDefault();
+        $(".item a:hidden").slice(0, 4).slideDown();
+        if ($(".item a:hidden").length == 0) {
+            $("#load").fadeOut('slow');
+        }
+        $('html,body').animate({
+            scrollTop: $(this).offset().top
+        }, 1500);
+    });
+});
+
+$('a[href=#top]').click(function () {
+    $('body,html').animate({
+        scrollTop: 0
+    }, 600);
+    return false;
+});
+
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 50) {
+        $('.totop a').fadeIn();
+    } else {
+        $('.totop a').fadeOut();
+    }
 });
